@@ -22,8 +22,8 @@ FDetachmentTransformRules detachmentrules(
 void ABaseEnemy::DamageActorInter()
 {
 	SetActorTickEnabled(false);
+	
 	PlayHitAnim();
-
 	FTimerHandle Destroytimer;
 	GetWorldTimerManager().SetTimer(Destroytimer, this, &ABaseEnemy::CharacterDestroy, 2);
 

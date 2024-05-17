@@ -65,7 +65,7 @@ void ABaseCannon::StartProjectile()
 {
 	//if (CanShoot)
 	//{
-		GetWorldTimerManager().SetTimer(ProjectileTimerHandle, this, &ABaseCannon::ShootProjectile, 1, true);
+		GetWorldTimerManager().SetTimer(ProjectileTimerHandle, this, &ABaseCannon::ShootProjectile, 0.5, true);
 	//}                                                                                                          
 	
 }                                                 

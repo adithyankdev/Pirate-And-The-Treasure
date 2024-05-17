@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "PaperCharacter.h"
 #include "Components/CapsuleComponent.h"
-#include "Components/SceneComponent.h"
+//#include "Components/SceneComponent.h"
 #include "GameFramework/Character.h"
 #include "Components/BoxComponent.h"
 #include "InputActionValue.h"
@@ -33,8 +33,6 @@ public:
 
 	virtual void CollectingSpeedBoost() override;
 
-	virtual void CollactabeMapCount() override;
-
 	APlayerPirate();
 
 	void BeginPlay();
@@ -59,16 +57,10 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = PirateFeature)
 	float MovementSpeed;
 
-//	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = PirateFeature)
-//	float Health;
-
-//	UPROPERTY(BlueprintReadwrite, VisibleAnywhere, Category = PirateFeature)
-//	int Coins;
-
-	UPROPERTY(BlueprintReadwrite, VisibleAnywhere, Category = PirateFeature)
+	UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category = PirateFeature)
 	int32 CollectabelMap;
 
-	UPROPERTY(BlueprintReadwrite, EditAnywhere, Category = PirateFeature)
+	UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category = PirateFeature)
 	int32 SpeedBoostCount;
 
 	UPROPERTY()
@@ -160,6 +152,8 @@ public:
 	//SpeedBoost Finish Function 
 	UPROPERTY()
 	bool CanBoost = false;
+	UPROPERTY()
+	bool ishit = false;
 
 	UFUNCTION()
 	void SpeedBoostFinish();

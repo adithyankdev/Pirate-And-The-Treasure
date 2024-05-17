@@ -14,9 +14,9 @@ void APlayerPirate::DamageActorInter()
 {
 	//SetActorTickEnabled(false);
 	APlayerPirate::DisableInput(PirateController);
-	PlayHitAnim();
+	if (!ishit)PlayHitAnim(); ishit = true;
 	FTimerHandle timer;
-	GetWorldTimerManager().SetTimer(timer, this, &APlayerPirate::Callingtimerwidget, 2);
+	GetWorldTimerManager().SetTimer(timer, this, &APlayerPirate::Callingtimerwidget, 1);
 		
 	
 }
