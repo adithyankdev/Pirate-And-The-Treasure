@@ -5,6 +5,7 @@
 #include "Runtime/Engine/Public/TimerManager.h"
 #include "Enemy/BaseEnemy.h"
 #include "Cannons/Base/BaseCannon.h"
+#include "PlayerPirate.h"
 
 void APlayerProjectile::DamageActorInter()
 {
@@ -62,6 +63,10 @@ void  APlayerProjectile::OnOverlapBegin(class UPrimitiveComponent* OverlappedCom
                 ActorInterfacee->DamageActorInter();
                 Destroy();
             }
+        }
+        else if (!OtherActor->IsA(APlayerPirate::StaticClass()))
+        {
+            Destroy();
         }
      
     }

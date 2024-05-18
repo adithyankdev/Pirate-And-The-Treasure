@@ -4,11 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "UObject/Interface.h"
-#include "PlayerInfoInterface.generated.h"
+#include "OpenFunctionJunction.generated.h"
 
 // This class does not need to be modified.
 UINTERFACE(MinimalAPI)
-class UPlayerInfoInterface : public UInterface
+class UOpenFunctionJunction : public UInterface
 {
 	GENERATED_BODY()
 };
@@ -16,14 +16,12 @@ class UPlayerInfoInterface : public UInterface
 /**
  * 
  */
-class GAMEPROJECT_2D_API IPlayerInfoInterface
+class GAMEPROJECT_2D_API IOpenFunctionJunction
 {
 	GENERATED_BODY()
 
-	
 public:
-	virtual void CollectingSpeedBoost() = 0; 
 
+	//for Player and Shop
+	virtual void PlayerEnterShop() = 0; 
 };
-
-

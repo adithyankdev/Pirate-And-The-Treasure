@@ -5,16 +5,15 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Components/CapsuleComponent.h"
-#include "Interface/PlayerInfoInterface.h"
 #include "SpeedPotion.generated.h"
 
 UCLASS()
-class GAMEPROJECT_2D_API ASpeedPotion : public AActor , public IPlayerInfoInterface
+class GAMEPROJECT_2D_API ASpeedPotion : public AActor 
 {
 	GENERATED_BODY()
 	
 public:	
-	virtual void CollectingSpeedBoost() override;
+	
 	
 
 	ASpeedPotion();
@@ -36,6 +35,8 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void PlayCollectAnim();
+
+	
 
 	UFUNCTION()
 	void DestroyActor();

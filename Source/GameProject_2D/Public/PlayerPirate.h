@@ -15,23 +15,22 @@
 #include "Camera/CameraComponent.h"
 #include "Components/ArrowComponent.h"
 #include "GameFramework/SpringArmComponent.h"
-#include "Interface/PlayerInfoInterface.h"
 #include "Interface/DamageInterface.h"
+#include "Interface/OpenFunctionJunction.h"
 #include "PlayerPirate.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class GAMEPROJECT_2D_API APlayerPirate : public APaperCharacter , public IDamageInterface , public IPlayerInfoInterface
+class GAMEPROJECT_2D_API APlayerPirate : public APaperCharacter , public IDamageInterface , public IOpenFunctionJunction
 {
 	GENERATED_BODY()
 	
 public:
 	//Interface Function
 	virtual void DamageActorInter() override;
-
-	virtual void CollectingSpeedBoost() override;
+	virtual void PlayerEnterShop() override; 
 
 	APlayerPirate();
 
@@ -95,6 +94,9 @@ public:
 
 	UPROPERTY()
 	bool AtkPressed;
+
+	UPROPERTY()
+	bool CanEnterShop;
 
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = EnhancedInput)
 	UInputAction* Projectile;

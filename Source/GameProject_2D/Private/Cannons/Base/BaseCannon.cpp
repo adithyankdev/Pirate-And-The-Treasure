@@ -48,6 +48,7 @@ ABaseCannon::ABaseCannon()
 
 void ABaseCannon::BeginPlay()
 {
+	CannonHealth = 0.3f;
 	AttackBox->OnComponentBeginOverlap.AddDynamic(this, &ABaseCannon::OnBeginOverlap);
 	AttackBox->OnComponentEndOverlap.AddDynamic(this, &ABaseCannon::OnEndOverlap);
 	Super::BeginPlay();
@@ -74,9 +75,8 @@ void ABaseCannon::ShootProjectile()
 {
 	PlayAttackAnim();
 	FTimerHandle FireAnimTimer;
-	GetWorldTimerManager().SetTimer(FireAnimTimer, this, &ABaseCannon::ProceedFire, 0.2);
-	//FString Debug = TEXT("Shoot Projectile Triggerd");
-	//UKismetSystemLibrary::PrintString(GetWorld(), Debug,true,true,FLinearColor::Yellow,1);
+	GetWorldTimerManager().SetTimer(FireAnimTimer, this, &ABaseCannon::ProceedFire, 0.3+DIFFICULTY);
+	
 	
 }
 

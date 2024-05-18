@@ -21,13 +21,16 @@ void APlayerPirate::DamageActorInter()
 	
 }
 
+void APlayerPirate::PlayerEnterShop()
+{
+	CanEnterShop = true;
+	CanEnterShop = false;
+}
+
 void APlayerPirate::Callingtimerwidget()
 {
 	CallEndWidget();
 }
-
-
-
 
 
 //Constructor
@@ -56,7 +59,7 @@ APlayerPirate::APlayerPirate()
 	ZRotation = true;
 
 	CollectabelMap = 0; 
-
+	CanEnterShop = false;
 }
 
 //Begin Play ()
@@ -110,11 +113,6 @@ bool APlayerPirate::IsOnGround()
 	return false;
 }
 
-
-void APlayerPirate::CollectingSpeedBoost()
-{
-	SpeedBoostCount += 1;
-}
 
 
 

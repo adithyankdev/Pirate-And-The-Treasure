@@ -5,9 +5,7 @@
 #include "PlayerPirate.h"
 #include "Kismet/KismetSystemLibrary.h"
 
-void ASpeedPotion::CollectingSpeedBoost()
-{
-}
+
 
 // Sets default values
 ASpeedPotion::ASpeedPotion()
@@ -43,10 +41,7 @@ void ASpeedPotion::OnBeginOverlap(UPrimitiveComponent* OverlapedComponent, AActo
 			FTimerHandle CollectPotionTimer;
 			GetWorldTimerManager().SetTimer(CollectPotionTimer, this, &ASpeedPotion::DestroyActor, 0.3);
 		}*/
-		if (IPlayerInfoInterface* Interface = Cast <IPlayerInfoInterface>(OtherActor))
-		{
-			Interface->CollectingSpeedBoost();
-		}
+		
 
 	}
 }

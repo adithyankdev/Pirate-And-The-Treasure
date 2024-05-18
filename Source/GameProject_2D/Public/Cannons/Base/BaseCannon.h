@@ -21,6 +21,8 @@ public:
 
 	virtual void DamageActorInter() override;
 
+	UPROPERTY(BlueprintReadWrite,VisibleAnywhere)
+	float DIFFICULTY;
 
 	ABaseCannon();
 
@@ -29,7 +31,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UPROPERTY(BlueprintReadwrite, EditAnywhere, Category = Cannon)
-	float CannonHealth=0.0f;
+	float CannonHealth;
 
 	UPROPERTY(BlueprintReadonly, EditAnywhere , Category = Cannon)
 	TSubclassOf<AActor>Bullet;

@@ -40,8 +40,9 @@ void ABaseEnemy::CharacterDestroy()
 ABaseEnemy::ABaseEnemy()
 
 	: ToggleLoc(true),
-	EnemyChaseSpeed(0.6f),
-	EnemyPetrolSpeed(0.3f)
+	//hard value will be negative so  , for increase the speed  ( - -  == + )
+	EnemyChaseSpeed(0.6f - DIFFICULTY),
+	EnemyPetrolSpeed(0.3f - DIFFICULTY)
 
 {
 
@@ -134,11 +135,10 @@ void ABaseEnemy::PetrolLocationCheck()
 
 void ABaseEnemy::PetrollingArea()
 {
-	//FString debug = TEXT("Hello Petroling");
-	//UKismetSystemLibrary().PrintString(GetWorld(), debug);
 
 	Rotation();
-	float Tolarance = 1.0f;
+	//Adding diffuculty to increase enemy atk range for hard option
+	float Tolarance = 1.0f-DIFFICULTY;
 	FVector ActorLocation = this->GetActorLocation();
 
 	FVector Direction = (PetrolLocation - ActorLocation).GetSafeNormal();
@@ -155,7 +155,8 @@ void ABaseEnemy::PetrollingInterval()
 {
 	LocCheck = true;
 	FTimerHandle PetorlLocCheckTimer;
-	GetWorldTimerManager().SetTimer(PetorlLocCheckTimer, this, &ABaseEnemy::PetrolLocationCheck, 3);
+	//Difficulty added with multiply 10 due to int value
+	GetWorldTimerManager().SetTimer(PetorlLocCheckTimer, this, &ABaseEnemy::PetrolLocationCheck, 3+(DIFFICULTY*10));
 }
 
 
@@ -173,7 +174,8 @@ void ABaseEnemy::ChasingPlayer()
 
 void ABaseEnemy::StartAttackPlayer()
 {
-	GetWorldTimerManager().SetTimer(AttackTimer, this, &ABaseEnemy::AttackingPlayer, 1, true);
+	//Not Converting to int  , because   it can lead to negative value (unexpected behaviour)
+	GetWorldTimerManager().SetTimer(AttackTimer, this, &ABaseEnemy::AttackingPlayer, 1+DIFFICULTY, true);
 }
 
 void ABaseEnemy::AttackingPlayer()
@@ -225,11 +227,9 @@ void ABaseEnemy::OnEndOverlapVision(UPrimitiveComponent* OverlapedComponent, AAc
 		IsChasing = false;
 		HitBox->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 		if (!LocCheck)LocCheck = true;
-		//Add DIFFICULTY to the sec in the Timer
 		FTimerHandle Visionendtimer;
-		GetWorldTimerManager().SetTimer(Visionendtimer, this, &ABaseEnemy::PetrolLocationCheck, 3);
-		FString debug = TEXT("Vison Ended");
-		UKismetSystemLibrary::PrintString(GetWorld(), debug, true, true, FLinearColor::Red, 2);
+		//Hard Option  = -0.2  therefore  subraing the value which lead to add  -- for more time on stop when player is out of vision
+		GetWorldTimerManager().SetTimer(Visionendtimer, this, &ABaseEnemy::PetrolLocationCheck, (3-DIFFICULTY*10));
 	}
 
 

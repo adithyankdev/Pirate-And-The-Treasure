@@ -5,9 +5,7 @@
 #include "PlayerPirate.h"
 
 
-void ACoin::CollectingSpeedBoost()
-{
-}
+
 
 
 // Sets default values

@@ -5,18 +5,15 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Components/CapsuleComponent.h"
-#include "Interface/PlayerInfoInterface.h"
 #include "Coin.generated.h"
 
 UCLASS()
-class GAMEPROJECT_2D_API ACoin : public AActor , public IPlayerInfoInterface
+class GAMEPROJECT_2D_API ACoin : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 
-	//Interface Function
-	virtual void CollectingSpeedBoost() override; 
 
 	ACoin();
 

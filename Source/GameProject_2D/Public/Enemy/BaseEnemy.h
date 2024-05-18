@@ -21,7 +21,7 @@ class GAMEPROJECT_2D_API ABaseEnemy : public APaperCharacter , public IDamageInt
 
 public:
 
-	UPROPERTY()
+	UPROPERTY(BlueprintReadWrite,VisibleAnywhere)
 	float DIFFICULTY;
 
 	//Interface Function 
