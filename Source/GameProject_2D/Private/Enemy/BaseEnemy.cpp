@@ -175,7 +175,7 @@ void ABaseEnemy::ChasingPlayer()
 void ABaseEnemy::StartAttackPlayer()
 {
 	//Not Converting to int  , because   it can lead to negative value (unexpected behaviour)
-	GetWorldTimerManager().SetTimer(AttackTimer, this, &ABaseEnemy::AttackingPlayer, 1+DIFFICULTY, true);
+	GetWorldTimerManager().SetTimer(AttackTimer, this, &ABaseEnemy::AttackingPlayer, 0.5+DIFFICULTY, true);
 }
 
 void ABaseEnemy::AttackingPlayer()
