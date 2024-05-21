@@ -24,8 +24,10 @@ void APlayerPirate::DamageActorInter()
 void APlayerPirate::PlayerEnterShop()
 {
 	CanEnterShop = true;
-	CanEnterShop = false;
+	
 }
+
+
 
 void APlayerPirate::Callingtimerwidget()
 {
@@ -194,7 +196,7 @@ void APlayerPirate::AttackOne(const FInputActionValue& InputValue)
 
 	if (Value)
 	{
-		//APlayerController* PirateController = Cast<APlayerController>(GetController());
+		
 		APlayerPirate::DisableInput(PirateController);
 
 		FTimerHandle TimerHandle;
@@ -265,6 +267,15 @@ void APlayerPirate::SpeedBoostFunction(const FInputActionValue& InputValue)
 	
 }
 
+void APlayerPirate::PlayerToEnterShop(const FInputActionValue& InputValue)
+{
+	if (CanEnterShop)
+	{
+		CanEnterShop = false; 
+		ShopWidgetTrigger();
+	}
+}
+
 void APlayerPirate::SpeedBoostFinish()
 {
 	MovementSpeed -= 0.2f;
@@ -284,6 +295,7 @@ void APlayerPirate::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 		EnhancedComponent->BindAction(Attack1, ETriggerEvent::Triggered, this, &APlayerPirate::AttackOne);
 		EnhancedComponent->BindAction(Projectile, ETriggerEvent::Completed, this, &APlayerPirate::ThrowProjectile);
 		EnhancedComponent->BindAction(SpeedBoost, ETriggerEvent::Completed, this, &APlayerPirate::SpeedBoostFunction);
+		EnhancedComponent->BindAction(EnterToStore, ETriggerEvent::Triggered, this, &APlayerPirate::PlayerToEnterShop);
 	}
 }
 

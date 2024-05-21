@@ -24,4 +24,5 @@ public:
 
 	//for Player and Shop
 	virtual void PlayerEnterShop() = 0; 
+
 };

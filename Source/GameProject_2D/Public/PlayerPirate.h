@@ -31,7 +31,7 @@ public:
 	//Interface Function
 	virtual void DamageActorInter() override;
 	virtual void PlayerEnterShop() override; 
-
+		;
 	APlayerPirate();
 
 	void BeginPlay();
@@ -92,6 +92,9 @@ public:
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = EnhancedInput)
 	UInputAction* SpeedBoost;
 
+	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = EnhancedInput)
+	UInputAction* EnterToStore;
+
 	UPROPERTY()
 	bool AtkPressed;
 
@@ -141,6 +144,7 @@ public:
 	void AttackOne(const FInputActionValue& InputValue);
 	void ThrowProjectile(const FInputActionValue& InputValue);
 	void SpeedBoostFunction(const FInputActionValue& InputValue);
+	void PlayerToEnterShop(const FInputActionValue& InputValue);
 
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
@@ -162,5 +166,8 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void ActivateSpeedBoost();
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void ShopWidgetTrigger();
 
 };
