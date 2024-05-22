@@ -8,13 +8,14 @@
 #include "Components/StaticMeshComponent.h"
 #include "Components/BoxComponent.h" 
 #include "Interface/DamageInterface.h"
+#include "Interface/OpenFunctionJunction.h"
 #include "BaseEnemy.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class GAMEPROJECT_2D_API ABaseEnemy : public APaperCharacter , public IDamageInterface
+class GAMEPROJECT_2D_API ABaseEnemy : public APaperCharacter , public IDamageInterface , public IOpenFunctionJunction
 {
 	GENERATED_BODY()
 
@@ -24,8 +25,12 @@ public:
 	UPROPERTY(BlueprintReadWrite,VisibleAnywhere)
 	float DIFFICULTY;
 
+
+	virtual void PlayerEnterShop() override;
+
 	//Interface Function 
 	virtual void DamageActorInter() override;
+
 	//Interface referance for calling player interface
 	IDamageInterface* DamageInter;
 

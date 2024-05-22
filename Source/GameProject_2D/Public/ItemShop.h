@@ -4,17 +4,15 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Components/BoxComponent.h"
-#include "Interface/OpenFunctionJunction.h"
 #include "ItemShop.generated.h"
 
 UCLASS()
-class GAMEPROJECT_2D_API AItemShop : public AActor , public IOpenFunctionJunction
+class GAMEPROJECT_2D_API AItemShop : public AActor 
 {
 	GENERATED_BODY()
 	
 public:	
 	
-	virtual void PlayerEnterShop() override;
 
 	AItemShop();
 

@@ -30,8 +30,12 @@ class GAMEPROJECT_2D_API APlayerPirate : public APaperCharacter , public IDamage
 public:
 	//Interface Function
 	virtual void DamageActorInter() override;
+    
+
 	virtual void PlayerEnterShop() override; 
-		;
+	
+	IDamageInterface* Interface;
+
 	APlayerPirate();
 
 	void BeginPlay();

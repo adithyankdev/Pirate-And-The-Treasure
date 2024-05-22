@@ -16,6 +16,7 @@ class GAMEPROJECT_2D_API APlayerProjectile : public AActor , public IDamageInter
 public:
 
     virtual void DamageActorInter();
+   
 
     APlayerProjectile();
 

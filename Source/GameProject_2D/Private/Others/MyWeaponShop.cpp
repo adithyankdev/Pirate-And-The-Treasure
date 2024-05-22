@@ -2,11 +2,13 @@
 
 #include "Others/MyWeaponShop.h"
 #include "PlayerPirate.h"
+#include "Kismet/KismetSystemLibrary.h"
 
 void AMyWeaponShop::PlayerEnterShop()
 {
 
 }
+
 
 // Sets default values
 AMyWeaponShop::AMyWeaponShop()
@@ -14,9 +16,8 @@ AMyWeaponShop::AMyWeaponShop()
 	PrimaryActorTick.bCanEverTick = true;
 
 	BaseCollision = CreateDefaultSubobject<UBoxComponent>(TEXT("BoXComponent"));
-	RootComponent = BaseCollision;
-
-
+	SetRootComponent(BaseCollision);
+//	BaseCollision->SetCollisionProfileName("OverlapAllDynamics");
 }
 
 void AMyWeaponShop::BeginPlay()
@@ -33,12 +34,14 @@ void AMyWeaponShop::Tick(float DeltaTime)
 
 }
 
-void AMyWeaponShop::OnPlayerOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool BfromSweap, const FHitResult& SweapResult)
+void AMyWeaponShop::OnPlayerOverlap(UPrimitiveComponent* OverlapedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool FromSweep, const FHitResult& SweepResult)
 {
+	
 	if (OtherActor->IsA(APlayerPirate::StaticClass()))
 	{
 		if(IOpenFunctionJunction* Interface = Cast <IOpenFunctionJunction>(OtherActor))
 		{
+			
 			Interface->PlayerEnterShop();
 		}
     }

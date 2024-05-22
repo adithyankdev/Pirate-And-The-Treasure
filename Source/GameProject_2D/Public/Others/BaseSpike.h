@@ -16,7 +16,7 @@ class GAMEPROJECT_2D_API ABaseSpike : public AActor  , public IDamageInterface
 public:	
 
 	virtual void DamageActorInter() override;
-
+	
 
 	ABaseSpike();
 

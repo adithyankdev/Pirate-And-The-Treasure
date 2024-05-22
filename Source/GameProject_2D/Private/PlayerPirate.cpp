@@ -21,11 +21,15 @@ void APlayerPirate::DamageActorInter()
 	
 }
 
+
 void APlayerPirate::PlayerEnterShop()
 {
+	
 	CanEnterShop = true;
 	
 }
+
+
 
 
 
@@ -68,7 +72,7 @@ APlayerPirate::APlayerPirate()
 void APlayerPirate::BeginPlay()
 {
 	 PirateController = Cast<APlayerController>(GetController());
-
+	 Interface = NULL;
 	Enemycount = 0; 
 	Super::BeginPlay();
 
@@ -218,10 +222,11 @@ void APlayerPirate::OnBeginOverlapAtk(UPrimitiveComponent* OverlapedComponent, A
 		{
 			if (OtherActor->IsA(APaperCharacter::StaticClass()) ||OtherActor->IsA(AActor::StaticClass()))
 			{
-				if (IDamageInterface* Interface = Cast<IDamageInterface>(OtherActor))
+				if ( Interface == NULL)
 				{
-					Interface->DamageActorInter();
+					Interface = Cast <IDamageInterface>(OtherActor);
 				}
+				Interface->DamageActorInter();
 			}
 			
 		}
@@ -271,8 +276,12 @@ void APlayerPirate::PlayerToEnterShop(const FInputActionValue& InputValue)
 {
 	if (CanEnterShop)
 	{
+		FString Tola = TEXT("Shop Entered");
+		UKismetSystemLibrary::PrintString(GetWorld(), Tola, true, true, FLinearColor::Blue);
 		CanEnterShop = false; 
 		ShopWidgetTrigger();
+		
+		
 	}
 }
 

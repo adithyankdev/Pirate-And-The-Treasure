@@ -20,6 +20,7 @@ class GAMEPROJECT_2D_API ABaseCannon : public AActor , public IDamageInterface
 public:	
 
 	virtual void DamageActorInter() override;
+	
 
 	UPROPERTY(BlueprintReadWrite,VisibleAnywhere)
 	float DIFFICULTY;

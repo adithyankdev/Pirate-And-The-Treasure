@@ -18,6 +18,12 @@ FDetachmentTransformRules detachmentrules(
 	true
 );
 
+
+
+void ABaseEnemy::PlayerEnterShop()
+{
+}
+
 //Interface Function  Implementation
 void ABaseEnemy::DamageActorInter()
 {
@@ -28,6 +34,8 @@ void ABaseEnemy::DamageActorInter()
 	GetWorldTimerManager().SetTimer(Destroytimer, this, &ABaseEnemy::CharacterDestroy, 2);
 
 }
+
+
 
 void ABaseEnemy::CharacterDestroy()
 {

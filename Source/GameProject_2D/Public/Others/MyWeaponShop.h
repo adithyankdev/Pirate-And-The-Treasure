@@ -29,7 +29,7 @@ protected:
 public:	
 	virtual void Tick(float DeltaTime) override;
 
-
-	void OnPlayerOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool BfromSweap, const FHitResult& SweapResult);
+	UFUNCTION()
+	void OnPlayerOverlap(UPrimitiveComponent* OverlapedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool FromSweep, const FHitResult& SweepResult);
 
 };

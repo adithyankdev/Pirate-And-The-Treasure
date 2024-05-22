@@ -3,10 +3,7 @@
 #include "ItemShop.h"
 #include "PlayerPirate.h"
 
-void AItemShop::PlayerEnterShop()
-{
 
-}
 
 AItemShop::AItemShop()
 {
@@ -35,11 +32,5 @@ void AItemShop::Tick(float DeltaTime)
 
 void AItemShop::OnPlayerEnterOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool bFromSweap, const FHitResult& SweapResultf)
 {
-	if (OtherActor->IsA(APlayerPirate::StaticClass()))
-	{
-		if (IOpenFunctionJunction* Interface = Cast<IOpenFunctionJunction>(OtherActor))
-		{
-			Interface->PlayerEnterShop();
-		}
-	}
+	
 }

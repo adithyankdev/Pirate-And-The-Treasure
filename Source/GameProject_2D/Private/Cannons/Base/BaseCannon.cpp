@@ -22,6 +22,8 @@ void ABaseCannon::DamageActorInter()
 	
 }
 
+  
+
 void ABaseCannon::ProceedDestroy()
 {
 	Destroy();

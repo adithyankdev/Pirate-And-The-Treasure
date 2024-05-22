@@ -10,6 +10,7 @@ void ABaseSpike::DamageActorInter()
 
 }
 
+
 ABaseSpike::ABaseSpike()
 {
 	PrimaryActorTick.bCanEverTick = true;
