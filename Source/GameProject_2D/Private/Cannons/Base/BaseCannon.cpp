@@ -8,8 +8,6 @@ void ABaseCannon::DamageActorInter()
 {
 	 PlayHitAnim();
 	 CannonHealth -= 0.1f;
-	FString Debug = TEXT("Get Hit");
-	UKismetSystemLibrary::PrintString(GetWorld(), Debug,true ,true,FLinearColor::Red);
 	
 	//add the difficulty here
 	

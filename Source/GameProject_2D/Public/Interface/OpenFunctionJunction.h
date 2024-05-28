@@ -21,8 +21,8 @@ class GAMEPROJECT_2D_API IOpenFunctionJunction
 	GENERATED_BODY()
 
 public:
-
 	//for Player and Shop
+	UFUNCTION()
 	virtual void PlayerEnterShop() = 0; 
 	
 

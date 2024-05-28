@@ -29,8 +29,9 @@ class GAMEPROJECT_2D_API APlayerPirate : public APaperCharacter , public IDamage
 	
 public:
 	//Interface Function
+	UFUNCTION()
 	virtual void DamageActorInter() override;
-    
+    UFUNCTION()
 	virtual void PlayerEnterShop() override; 
 	
 
@@ -135,14 +136,20 @@ public:
 	UFUNCTION(BlueprintImplementableEvent)
 	void CallEndWidget();
 
-
+	UFUNCTION()
 	void JumpFunction(const FInputActionValue& InputValue);
+	UFUNCTION()
 	void MoveFunction(const FInputActionValue& InputValue);
+	UFUNCTION()
 	void AttackOne(const FInputActionValue& InputValue);
+	UFUNCTION()
 	void ThrowProjectile(const FInputActionValue& InputValue);
+	UFUNCTION()
 	void SpeedBoostFunction(const FInputActionValue& InputValue);
+	UFUNCTION()
 	void PlayerToEnterShop(const FInputActionValue& InputValue);
 
+	UFUNCTION()
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	//Play Animation

@@ -5,9 +5,13 @@
 #include "Kismet/KismetSystemLibrary.h"
 #include "PlayerPirate.h"
 #include "Enemy/BaseEnemy.h"
-
 #include "Runtime/Engine/Public/TimerManager.h"
 
+
+void ABaseCannonBullet::DamageActorInter()
+{
+
+}
 
 ABaseCannonBullet::ABaseCannonBullet()
 {
@@ -59,6 +63,6 @@ void ABaseCannonBullet::OnBeignOverlap(UPrimitiveComponent* HitComponent, AActor
 		}
 	}
 	//Give Hit Damage to enemy Also 
-
+	
 }
 

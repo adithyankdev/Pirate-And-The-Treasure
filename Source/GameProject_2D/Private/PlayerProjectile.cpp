@@ -24,7 +24,7 @@ APlayerProjectile::APlayerProjectile()
     CapsuleComponent = CreateDefaultSubobject<UCapsuleComponent>(TEXT("CapsuleComponent"));
     RootComponent = CapsuleComponent;
     CapsuleComponent->SetCollisionProfileName("BlockAllDynamic");
-    CapsuleComponent->OnComponentBeginOverlap.AddDynamic(this, &APlayerProjectile::OnOverlapBegin);
+   
 
     // Create a projectile movement component
     ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileMovement"));
@@ -39,7 +39,7 @@ APlayerProjectile::APlayerProjectile()
 void  APlayerProjectile::BeginPlay()
 {
     Super::BeginPlay();
-
+    CapsuleComponent->OnComponentBeginOverlap.AddDynamic(this, &APlayerProjectile::OnOverlapBegin);
     FTimerHandle Timertodestroy;
     GetWorldTimerManager().SetTimer(Timertodestroy, this, &APlayerProjectile::AutoDestroy, 3);
 }

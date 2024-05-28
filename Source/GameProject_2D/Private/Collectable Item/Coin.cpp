@@ -4,10 +4,6 @@
 #include "Collectable Item/Coin.h"
 #include "PlayerPirate.h"
 
-
-
-
-
 // Sets default values
 ACoin::ACoin()
 {

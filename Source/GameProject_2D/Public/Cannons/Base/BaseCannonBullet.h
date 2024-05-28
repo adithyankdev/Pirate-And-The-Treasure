@@ -4,16 +4,19 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Interface/DamageInterface.h"
 #include "Components/CapsuleComponent.h"
 #include "BaseCannonBullet.generated.h"
 
 UCLASS()
-class GAMEPROJECT_2D_API ABaseCannonBullet : public AActor 
+class GAMEPROJECT_2D_API ABaseCannonBullet : public AActor , public IDamageInterface
 {
 	GENERATED_BODY()
 	
 public:	
 	
+	virtual void DamageActorInter() override;
+
 	ABaseCannonBullet();
 
 protected:
