@@ -22,13 +22,14 @@ FDetachmentTransformRules detachmentrules(
 
 void ABaseEnemy::PlayerEnterShop()
 {
+
 }
 
 //Interface Function  Implementation
 void ABaseEnemy::DamageActorInter()
 {
-	SetActorTickEnabled(false);
-	
+	Hited = true; 
+	//OneTimeAttack = true;
 	PlayHitAnim();
 	FTimerHandle Destroytimer;
 	GetWorldTimerManager().SetTimer(Destroytimer, this, &ABaseEnemy::CharacterDestroy, 2);
@@ -67,6 +68,7 @@ ABaseEnemy::ABaseEnemy()
 	Point2->SetupAttachment(RootComponent);
 
 	PrimaryActorTick.bCanEverTick = true;
+	OneTimeAttack = false; 
 
 
 }
@@ -85,6 +87,7 @@ void ABaseEnemy::BeginPlay()
 	IsChasing = false; 
 	IsAttacking = false;
 	LocCheck = true; 
+	Hited = false; 
 
 	HitBox->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	HitBox->OnComponentBeginOverlap.AddDynamic(this, &ABaseEnemy::OnBeginOverlapAtk);
@@ -104,14 +107,14 @@ void ABaseEnemy::BeginPlay()
 void ABaseEnemy::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	if (IsPetrolling and !IsAttacking)PetrolLocationCheck();
-	 if (IsChasing and !IsAttacking)ChasingPlayer();
+	if (IsPetrolling && !IsAttacking && !Hited)PetrolLocationCheck();
+	 if (IsChasing && !IsAttacking && !Hited)ChasingPlayer();
 
 }
 
 void ABaseEnemy::Rotation()
 {
-
+	
 	FVector  Velocity = GetVelocity();
 	if (Velocity.X != 0)
 	{
@@ -129,13 +132,16 @@ void ABaseEnemy::Rotation()
 }
 void ABaseEnemy::PetrolLocationCheck()
 {
-	if (LocCheck)
-	{
-		PetrolLocation = ToggleLoc ? Point1->GetComponentLocation() : Point2->GetComponentLocation();
-		ToggleLoc = !ToggleLoc;
-		LocCheck = false;
-		if (!IsPetrolling)IsPetrolling = true;
-	}
+	
+		if (LocCheck)
+		{
+			PetrolLocation = ToggleLoc ? Point1->GetComponentLocation() : Point2->GetComponentLocation();
+			ToggleLoc = !ToggleLoc;
+			LocCheck = false;
+			if (!IsPetrolling)IsPetrolling = true;
+		}
+	
+	
 
 	PetrollingArea();
 
@@ -143,28 +149,33 @@ void ABaseEnemy::PetrolLocationCheck()
 
 void ABaseEnemy::PetrollingArea()
 {
+	
+		Rotation();
+		//Adding diffuculty to increase enemy atk range for hard option
+		float Tolarance = 1.0f - DIFFICULTY;
+		FVector ActorLocation = this->GetActorLocation();
 
-	Rotation();
-	//Adding diffuculty to increase enemy atk range for hard option
-	float Tolarance = 1.0f-DIFFICULTY;
-	FVector ActorLocation = this->GetActorLocation();
+		FVector Direction = (PetrolLocation - ActorLocation).GetSafeNormal();
 
-	FVector Direction = (PetrolLocation - ActorLocation).GetSafeNormal();
+		AddMovementInput(Direction, EnemyPetrolSpeed);
 
-	AddMovementInput(Direction, EnemyPetrolSpeed);
-
-	if (abs(PetrolLocation.X - ActorLocation.X) <= Tolarance)
-	{
-		IsPetrolling = false;
-		PetrollingInterval();
-	}
+		if (abs(PetrolLocation.X - ActorLocation.X) <= Tolarance)
+		{
+			IsPetrolling = false;
+			PetrollingInterval();
+		}
+	
+	
 }
 void ABaseEnemy::PetrollingInterval()
 {
-	LocCheck = true;
-	FTimerHandle PetorlLocCheckTimer;
-	//Difficulty added with multiply 10 due to int value
-	GetWorldTimerManager().SetTimer(PetorlLocCheckTimer, this, &ABaseEnemy::PetrolLocationCheck, 3+(DIFFICULTY*10));
+	
+		LocCheck = true;
+		FTimerHandle PetorlLocCheckTimer;
+		//Difficulty added with multiply 10 due to int value
+		GetWorldTimerManager().SetTimer(PetorlLocCheckTimer, this, &ABaseEnemy::PetrolLocationCheck, 3 + (DIFFICULTY * 10));
+	
+	
 }
 
 
@@ -188,15 +199,20 @@ void ABaseEnemy::StartAttackPlayer()
 
 void ABaseEnemy::AttackingPlayer()
 {
-	if (DamageInter == nullptr)
+	if (!Hited and !OneTimeAttack)
 	{
-		DamageInter = Cast<IDamageInterface>(Player);
+		OneTimeAttack = true; 
+		if (DamageInter == nullptr)
+		{
+			DamageInter = Cast<IDamageInterface>(Player);
+		}
+		if (DamageInter != nullptr) 
+		{
+			PlayAttackAnim();
+			DamageInter->DamageActorInter();
+		}
 	}
-	if (DamageInter != nullptr)
-	{
-		PlayAttackAnim();
-		DamageInter->DamageActorInter();
-	}
+	
 }
 
 void ABaseEnemy::StopAttackingPlayer()

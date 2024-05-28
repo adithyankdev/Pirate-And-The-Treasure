@@ -83,5 +83,7 @@ public:
 	UFUNCTION(BlueprintImplementableEvent)
 	void PlayDeadAnim();
 
+	
+
 
 };

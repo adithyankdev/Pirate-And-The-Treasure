@@ -26,6 +26,9 @@ public:
 	float DIFFICULTY;
 
 
+	UPROPERTY()
+	bool Hited;
+
 	virtual void PlayerEnterShop() override;
 
 	//Interface Function 
@@ -143,5 +146,7 @@ public:
 
 	UFUNCTION()
 	virtual void StopAttackingPlayer();
+
+	bool OneTimeAttack;
 
 };

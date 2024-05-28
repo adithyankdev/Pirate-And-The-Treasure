@@ -66,10 +66,7 @@ void  APlayerProjectile::OnOverlapBegin(class UPrimitiveComponent* OverlappedCom
                 Destroy();
             }
         }
-        else if (!OtherActor->IsA(APlayerPirate::StaticClass()))
-        {
-            Destroy();
-        }
+        
      
     }
    

@@ -31,10 +31,8 @@ public:
 	//Interface Function
 	virtual void DamageActorInter() override;
     
-
 	virtual void PlayerEnterShop() override; 
 	
-	IDamageInterface* Interface;
 
 	APlayerPirate();
 
@@ -54,7 +52,7 @@ public:
 	UPROPERTY(BlueprintReadOnly, EditAnywhere)
 	UArrowComponent* ArrowComp;
 
-	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = PirateFeature)
+	UPROPERTY(BlueprintReadwrite, EditAnywhere, Category = PirateFeature)
 	int32 ProjectileCount;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = PirateFeature)
@@ -87,11 +85,6 @@ public:
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = EnhancedInput)
 	UInputAction* Attack1;
 
-	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = EnhancedInput)
-	UInputAction* Attack2;
-
-	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = EnhancedInput)
-	UInputAction* Attack3;
 
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = EnhancedInput)
 	UInputAction* SpeedBoost;
@@ -163,7 +156,7 @@ public:
 	UPROPERTY()
 	bool CanBoost = false;
 	UPROPERTY()
-	bool ishit = false;
+	bool GotHit = false;
 
 	UFUNCTION()
 	void SpeedBoostFinish();
@@ -173,5 +166,11 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void ShopWidgetTrigger();
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void ProjectileShooted();
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void SpeedPotionUsed();
 
 };

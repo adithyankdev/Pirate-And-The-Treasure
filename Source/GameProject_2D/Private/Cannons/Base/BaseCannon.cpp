@@ -46,6 +46,7 @@ ABaseCannon::ABaseCannon()
 
 	//CanShoot = true; 
 
+
 }
 
 void ABaseCannon::BeginPlay()

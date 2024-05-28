@@ -12,11 +12,10 @@
 //Interface Function Implementation
 void APlayerPirate::DamageActorInter()
 {
-	//SetActorTickEnabled(false);
 	APlayerPirate::DisableInput(PirateController);
-	if (!ishit)PlayHitAnim(); ishit = true;
+	if (!GotHit)PlayHitAnim();GotHit = true;
 	FTimerHandle timer;
-	GetWorldTimerManager().SetTimer(timer, this, &APlayerPirate::Callingtimerwidget, 1);
+	GetWorldTimerManager().SetTimer(timer, this, &APlayerPirate::Callingtimerwidget, 0.5);
 		
 	
 }
@@ -42,7 +41,7 @@ void APlayerPirate::Callingtimerwidget()
 //Constructor
 APlayerPirate::APlayerPirate()
 {
-
+	
 
 	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
 	SpringArm->SetupAttachment(RootComponent);
@@ -59,24 +58,25 @@ APlayerPirate::APlayerPirate()
 
 	PirateController = NULL;
 	//Coins = 0;
-	MovementSpeed = 0.6f;
+	MovementSpeed = 0.5f;
 	IsJumping = false;
 
 	ZRotation = true;
 
 	CollectabelMap = 0; 
 	CanEnterShop = false;
+	ProjectileCount = 0;
 }
 
 //Begin Play ()
 void APlayerPirate::BeginPlay()
 {
 	 PirateController = Cast<APlayerController>(GetController());
-	 Interface = NULL;
+	 
 	Enemycount = 0; 
 	Super::BeginPlay();
 
-	ProjectileCount = 3;
+	
 
 	HitBox->OnComponentBeginOverlap.AddDynamic(this, &APlayerPirate::OnBeginOverlapAtk);
 	//	HitBox->OnComponentEndOverlap.AddDynamic(this, &APlayerCharacter::OnEndOverlapAtk);
@@ -136,7 +136,7 @@ void APlayerPirate::CharacterJumping()
 	IsJumping = false;
 }
 
-//Disabling Input for avoid spamming
+
 void APlayerPirate::DisableInputFalse()
 {
 	//APlayerController* PirateController = Cast<APlayerController>(GetController());
@@ -222,14 +222,14 @@ void APlayerPirate::OnBeginOverlapAtk(UPrimitiveComponent* OverlapedComponent, A
 		{
 			if (OtherActor->IsA(APaperCharacter::StaticClass()) ||OtherActor->IsA(AActor::StaticClass()))
 			{
-				if ( Interface == NULL)
+				if ( IDamageInterface *Interface = Cast <IDamageInterface>(OtherActor))
 				{
-					Interface = Cast <IDamageInterface>(OtherActor);
+					Interface->DamageActorInter();
 				}
-				Interface->DamageActorInter();
+				
 			}
 			
-		}
+		}  
 	}
 }
 
@@ -245,13 +245,14 @@ void APlayerPirate::ThrowProjectile(const FInputActionValue& InputValue)
 	bool value = CurrentRotation();
 	if (ProjectileCount != 0)
 	{
-
+		ProjectileCount--;
 		FVector Location = ArrowComp->GetComponentLocation();
 		FRotator Rotation = ArrowComp->GetComponentRotation();
 
 		 GetWorld()->SpawnActor<AActor>(ActorToSpawn, Location, Rotation);
+		 ProjectileShooted();
 		
-		}
+	}
 		
 
 	
@@ -261,8 +262,9 @@ void APlayerPirate::SpeedBoostFunction(const FInputActionValue& InputValue)
 {
 	if (SpeedBoostCount > 0 && !CanBoost)
 	{
+		SpeedPotionUsed();
 		CanBoost = true;
-		SpeedBoostCount -= 1;
+		SpeedBoostCount --;
 		MovementSpeed += 0.2f;
 		FTimerHandle SpeedBoostExpireTimer;
 		FString Tola = TEXT("Speed Boosted ");
@@ -280,7 +282,6 @@ void APlayerPirate::PlayerToEnterShop(const FInputActionValue& InputValue)
 		UKismetSystemLibrary::PrintString(GetWorld(), Tola, true, true, FLinearColor::Blue);
 		CanEnterShop = false; 
 		ShopWidgetTrigger();
-		
 		
 	}
 }

@@ -17,7 +17,7 @@ AMyWeaponShop::AMyWeaponShop()
 
 	BaseCollision = CreateDefaultSubobject<UBoxComponent>(TEXT("BoXComponent"));
 	SetRootComponent(BaseCollision);
-//	BaseCollision->SetCollisionProfileName("OverlapAllDynamics");
+
 }
 
 void AMyWeaponShop::BeginPlay()
