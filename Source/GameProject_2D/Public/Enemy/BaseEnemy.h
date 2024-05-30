@@ -15,7 +15,7 @@
  * 
  */
 UCLASS()
-class GAMEPROJECT_2D_API ABaseEnemy : public APaperCharacter , public IDamageInterface , public IOpenFunctionJunction
+class GAMEPROJECT_2D_API ABaseEnemy : public APaperCharacter , public IDamageInterface 
 {
 	GENERATED_BODY()
 
@@ -25,11 +25,9 @@ public:
 	UPROPERTY(BlueprintReadWrite,VisibleAnywhere)
 	float DIFFICULTY;
 
-
 	UPROPERTY()
 	bool Hited;
 
-	virtual void PlayerEnterShop() override;
 
 	//Interface Function 
 	virtual void DamageActorInter() override;

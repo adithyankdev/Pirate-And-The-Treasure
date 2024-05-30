@@ -73,7 +73,7 @@ void APlayerPirate::BeginPlay()
 {
 	 PirateController = Cast<APlayerController>(GetController());
 	 
-	Enemycount = 0; 
+//	Enemycount = 0; 
 	Super::BeginPlay();
 
 	

@@ -8,8 +8,7 @@ void ABaseCannon::DamageActorInter()
 {
 	 PlayHitAnim();
 	 CannonHealth -= 0.1f;
-	
-	//add the difficulty here
+	    
 	
 	if (CannonHealth < 0.0)
 	{
@@ -20,7 +19,7 @@ void ABaseCannon::DamageActorInter()
 	
 }
 
-  
+
 
 void ABaseCannon::ProceedDestroy()
 {
@@ -65,11 +64,8 @@ void ABaseCannon::Tick(float DeltaTime)
 //Add The Diffculty to timer
 void ABaseCannon::StartProjectile()
 {
-	//if (CanShoot)
-	//{
 		GetWorldTimerManager().SetTimer(ProjectileTimerHandle, this, &ABaseCannon::ShootProjectile, 0.5, true);
-	//}                                                                                                          
-	
+	                                                                                                         
 }                                                 
 
 void ABaseCannon::ShootProjectile()
@@ -99,6 +95,7 @@ void ABaseCannon::ProceedFire()
 	}
 	
 }
+
 
 
 

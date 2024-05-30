@@ -19,12 +19,6 @@ FDetachmentTransformRules detachmentrules(
 );
 
 
-
-void ABaseEnemy::PlayerEnterShop()
-{
-
-}
-
 //Interface Function  Implementation
 void ABaseEnemy::DamageActorInter()
 {
