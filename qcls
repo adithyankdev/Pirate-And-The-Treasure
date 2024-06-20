@@ -1,0 +1,113 @@
+[33mcommit 7aaf09ca36f93b760e45e4e539a2b2198520f2bd[m[33m ([m[1;36mHEAD[m[33m, [m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m
+Author: Adithyan K <adx00k@gmail.com>
+Date:   Thu May 30 10:03:20 2024 +0530
+
+     modifed file to solve  error . (pure virtual function unsolved)
+
+[33mcommit 6c1be755712f2837bb2cd124b9fbab574e36935a[m
+Author: Adithyan K <adx00k@gmail.com>
+Date:   Tue May 28 21:12:46 2024 +0530
+
+    optimzation on cpp
+
+[33mcommit 6756fdd283b1916b51350debc577b34d972b2c67[m
+Author: Adithyan K <adx00k@gmail.com>
+Date:   Tue May 28 21:12:21 2024 +0530
+
+    Mine Optimization Done BP and C++
+
+[33mcommit 8f07ffe8cc64bbc24a787b6b7d9c5cecbf53e395[m
+Author: Adithyan K <adx00k@gmail.com>
+Date:   Tue May 28 10:34:10 2024 +0530
+
+    Modified file on cpp
+
+[33mcommit 3c270f16c5e968d1daf550eefc981ec7414764e7[m
+Author: Adithyan K <adx00k@gmail.com>
+Date:   Tue May 28 10:33:24 2024 +0530
+
+    Most the Sprite Filter changed to Nearest (Pure virtual function error encounted)
+
+[33mcommit 2674a4ce73cacd81f31af1fb4ef4761958625cb2[m
+Author: Adithyan K <adx00k@gmail.com>
+Date:   Wed May 22 21:14:13 2024 +0530
+
+    Ue commit sprite added for lvl 3
+
+[33mcommit b5e7394dd99ca4d50eb31c4939fa523cc5cdaa1a[m
+Author: Adithyan K <adx00k@gmail.com>
+Date:   Wed May 22 21:13:34 2024 +0530
+
+    shop implemented(connect fucntionality left)and started 3rd lvl desgin
+
+[33mcommit 2dadd79e0d97072fd739b5d9e3021791c27ac201[m
+Author: Adithyan K <adx00k@gmail.com>
+Date:   Tue May 21 19:41:16 2024 +0530
+
+    Cpp commit on shop actor  ,  Openfunctionjunction modifed
+
+[33mcommit 9be2c6146f7b96a2bb01d3a2a131c4512e2249f9[m
+Author: Adithyan K <adx00k@gmail.com>
+Date:   Tue May 21 19:40:17 2024 +0530
+
+    Difficulty Completly Implemented and Shop widget Finished
+
+[33mcommit 10a3d41dc8163bc779d07e08bf17c66395914ba8[m
+Author: Adithyan K <adx00k@gmail.com>
+Date:   Mon May 20 20:20:20 2024 +0530
+
+    Enemy minor commit
+
+[33mcommit 1adea47a12a2268455c62b80acf6ac789304ed9d[m
+Author: Adithyan K <adx00k@gmail.com>
+Date:   Mon May 20 20:19:05 2024 +0530
+
+    Difficult Functionality Completely Implemented
+
+[33mcommit 2d7a698eddc9ee6bfbbb2169bd6033462a26fdc0[m
+Author: Adithyan K <adx00k@gmail.com>
+Date:   Mon May 20 16:53:56 2024 +0530
+
+    Set up of Difficulty and pause game widget
+
+[33mcommit ef7a74c81a92043add546f3b9b7d5bba0c9df909[m
+Author: Adithyan K <adx00k@gmail.com>
+Date:   Sat May 18 14:56:46 2024 +0530
+
+    Difficulty set up on class
+
+[33mcommit 90f346d01066ae17a954bdfa75364df30717cf0d[m
+Author: Adithyan K <adx00k@gmail.com>
+Date:   Sat May 18 14:55:21 2024 +0530
+
+    Buy Item Initial Setup and UI Modified
+
+[33mcommit 67998935e3bbcac07b0aea7a688b414e2236e088[m
+Author: Adithyan K <adx00k@gmail.com>
+Date:   Fri May 17 19:59:16 2024 +0530
+
+    basecannon recommit
+
+[33mcommit ca02438dfeee90450eea7de06d940dc1c3a0cafe[m
+Author: Adithyan K <adx00k@gmail.com>
+Date:   Fri May 17 19:57:11 2024 +0530
+
+    Game Map Rearranged
+
+[33mcommit 450a1ed25e5f39fdc54dc9459782a75dbeb91d9f[m
+Author: Adithyan K <adx00k@gmail.com>
+Date:   Fri May 17 16:12:09 2024 +0530
+
+    Implemented The Map collection and Play dead
+
+[33mcommit e99e87eafdfd37a9e8c6722de2e6f60c6214c4d2[m
+Author: Adithyan K <adx00k@gmail.com>
+Date:   Fri May 17 13:27:15 2024 +0530
+
+    Build/ commit
+
+[33mcommit b3235a9cd97765f439173982d0348bbe0203cfd6[m
+Author: Adithyan K <adx00k@gmail.com>
+Date:   Fri May 17 13:25:57 2024 +0530
+
+    Initial commit (80 % Completed)

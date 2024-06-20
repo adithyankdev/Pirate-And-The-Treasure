@@ -63,9 +63,10 @@ APlayerPirate::APlayerPirate()
 
 	ZRotation = true;
 
-	CollectabelMap = 0; 
+	
 	CanEnterShop = false;
 	ProjectileCount = 0;
+	SpeedBoostCount = 0;
 }
 
 //Begin Play ()
@@ -204,6 +205,7 @@ void APlayerPirate::AttackOne(const FInputActionValue& InputValue)
 		APlayerPirate::DisableInput(PirateController);
 
 		FTimerHandle TimerHandle;
+		
 		GetWorldTimerManager().SetTimer(TimerHandle, this, &APlayerPirate::DisableInputFalse, 0.3);
 
 	}
@@ -218,13 +220,17 @@ void APlayerPirate::OnBeginOverlapAtk(UPrimitiveComponent* OverlapedComponent, A
 {
 	if (AtkPressed)
 	{
+	
 		if (OtherActor != this && OtherComponent==OtherActor->GetRootComponent())
 		{
+			
 			if (OtherActor->IsA(APaperCharacter::StaticClass()) ||OtherActor->IsA(AActor::StaticClass()))
 			{
+			
 				if ( IDamageInterface *Interface = Cast <IDamageInterface>(OtherActor))
 				{
 					Interface->DamageActorInter();
+					
 				}
 				
 			}
@@ -262,13 +268,12 @@ void APlayerPirate::SpeedBoostFunction(const FInputActionValue& InputValue)
 {
 	if (SpeedBoostCount > 0 && !CanBoost)
 	{
-		SpeedPotionUsed();
+	
 		CanBoost = true;
 		SpeedBoostCount --;
+		SpeedPotionUsed();
 		MovementSpeed += 0.2f;
 		FTimerHandle SpeedBoostExpireTimer;
-		FString Tola = TEXT("Speed Boosted ");
-		UKismetSystemLibrary::PrintString(GetWorld(), Tola, true, true, FLinearColor::Red);
 		GetWorldTimerManager().SetTimer(SpeedBoostExpireTimer, this, &APlayerPirate::SpeedBoostFinish, 5);
 	}
 	
@@ -278,8 +283,6 @@ void APlayerPirate::PlayerToEnterShop(const FInputActionValue& InputValue)
 {
 	if (CanEnterShop)
 	{
-		FString Tola = TEXT("Shop Entered");
-		UKismetSystemLibrary::PrintString(GetWorld(), Tola, true, true, FLinearColor::Blue);
 		CanEnterShop = false; 
 		ShopWidgetTrigger();
 		
@@ -289,8 +292,6 @@ void APlayerPirate::PlayerToEnterShop(const FInputActionValue& InputValue)
 void APlayerPirate::SpeedBoostFinish()
 {
 	MovementSpeed -= 0.2f;
-	FString Tola = TEXT("Speed Boost Finished ");
-	UKismetSystemLibrary::PrintString(GetWorld(), Tola, true, true, FLinearColor::Blue);
 	CanBoost = false; 
 }
 

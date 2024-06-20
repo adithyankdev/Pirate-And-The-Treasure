@@ -57,8 +57,6 @@ void  APlayerProjectile::OnOverlapBegin(class UPrimitiveComponent* OverlappedCom
     {
         if (OtherActor->IsA(ABaseEnemy::StaticClass()) || OtherActor->IsA(ABaseCannon::StaticClass()))
         {
-            FString debug = TEXT("Ovelapped bro");
-            UKismetSystemLibrary::PrintString(GetWorld(), debug);
 
             if (IDamageInterface* ActorInterfacee = Cast<IDamageInterface>(OtherActor))
             {

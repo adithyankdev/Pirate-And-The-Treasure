@@ -42,9 +42,6 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 
-	UPROPERTY(BlueprintReadonly, EditAnywhere, Category = PirateFeature)
-	int32 Enemycount;
-
 	//Projectile Actor Reference
 	UPROPERTY(BlueprintReadonly, EditAnywhere, Category = PirateFeature)
 	TSubclassOf<AActor>ActorToSpawn;
@@ -54,16 +51,13 @@ public:
 	UArrowComponent* ArrowComp;
 
 	UPROPERTY(BlueprintReadwrite, EditAnywhere, Category = PirateFeature)
-	int32 ProjectileCount;
+	int ProjectileCount;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = PirateFeature)
 	float MovementSpeed;
 
 	UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category = PirateFeature)
-	int32 CollectabelMap;
-
-	UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category = PirateFeature)
-	int32 SpeedBoostCount;
+	int SpeedBoostCount;
 
 	UPROPERTY()
 	bool IsJumping;
